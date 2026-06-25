@@ -1,0 +1,25 @@
+ kubectl get pod image-pull-lab
+NAME             READY   STATUS             RESTARTS   AGE
+image-pull-lab   0/1     ImagePullBackOff   0          15m
+
+
+
+kubectl describe pod image-pull-lab
+
+Events:
+  Type     Reason     Age                 From               Message
+  ----     ------     ----                ----               -------
+  Normal   Scheduled  16m                 default-scheduler  Successfully assigned default/image-pull-lab to kind-control-plane
+  Normal   Pulling    12m (x5 over 16m)   kubelet            spec.containers{web}: Pulling image "nginx:1.999-lab"
+  Warning  Failed     12m (x5 over 15m)   kubelet            spec.containers{web}: Failed to pull image "nginx:1.999-lab": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:1.999-lab": failed to resolve reference "docker.io/library/nginx:1.999-lab": docker.io/library/nginx:1.999-lab: not found
+  Warning  Failed     12m (x5 over 15m)   kubelet            spec.containers{web}: Error: ErrImagePull
+  Normal   BackOff    55s (x63 over 15m)  kubelet            spec.containers{web}: Back-off pulling image "nginx:1.999-lab"
+  Warning  Failed     55s (x63 over 15m)  kubelet            spec.containers{web}: Error: ImagePullBackOff
+
+name image 
+kubectl get pod image-pull-lab -o jsonpath='{.spec.containers[0].image}{"\n"}'
+nginx:1.999-lab
+
+problem :
+name image wrong should be image-name:version like nginx:1.25
+

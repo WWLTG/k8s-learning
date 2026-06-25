@@ -1,0 +1,16 @@
+name 
+image-pull-lab
+
+type 
+pod
+
+status
+ImagePullBackOff
+
+ready pods
+0/1
+
+symptoms
+
+The resource has been created, but the container has not started
+
