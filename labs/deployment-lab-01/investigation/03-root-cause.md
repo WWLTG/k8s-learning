@@ -1,21 +1,17 @@
 # Root Cause
 
-## Root cause statement
-
-اكتب السبب الجذري بجملة واضحة:
+ Root cause statement
 
 
-## Affected field
 
-```text
-File:
-Section:
-Current value:
-Expected value:
-```
 
-## English root cause
+Affected field
 
-```text
-The root cause was ____________________________________.
-```
+File: deployment.yaml
+Section: Readiness
+Current value: port 8080
+Expected value:80
+
+
+The root cause was in section readiness port should be 80 to match target pod port.
+

@@ -1,19 +1,15 @@
-# Solution
+finally  Solution
 
-## Change made
+Change port in Readiness to 80
 
 
-## Command used
+next step
 
-```bash
 kubectl apply -f labs/deployment-lab-01/working/deployment.yaml
-```
-
-## Why the change works
 
 
-## English solution note
+ Why the change works
+bcuz all is correct now
 
-```text
-I corrected the configuration and applied the updated Deployment.
-```
+
+I corrected the configuration and applied the updated Deployment

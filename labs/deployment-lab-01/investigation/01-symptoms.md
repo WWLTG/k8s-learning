@@ -1,27 +1,29 @@
 # Symptoms
 
-## Commands executed
+ Commands executed
 
-```bash
+
 kubectl get deployment -n deployment-lab-01
+
 kubectl get replicaset -n deployment-lab-01
+
 kubectl get pods -n deployment-lab-01
-```
 
-## Observed symptoms
 
-- Deployment desired replicas:
-- Deployment ready replicas:
-- Deployment available replicas:
-- ReplicaSet desired replicas:
-- ReplicaSet ready replicas:
-- Pod status:
-- Pod readiness:
+ Observed symptoms
 
-## English notes
+ Deployment desired replicas:3
 
-```text
-The Deployment created a ReplicaSet successfully.
-The ReplicaSet created the requested Pods.
-The application is not available yet.
-```
+ Deployment ready replicas:3
+
+ Deployment available replicas:0
+
+ ReplicaSet desired replicas:3
+
+ ReplicaSet ready replicas:3
+
+ Pod status:Running
+
+ Pod readiness:failed
+
+
