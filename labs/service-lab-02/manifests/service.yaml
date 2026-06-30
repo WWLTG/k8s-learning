@@ -7,8 +7,8 @@ spec:
   type: ClusterIP
   selector:
     app: api
-    tier: backends
+    tier: backend
   ports:
     - name: http
       port: 8080
-      targetPort: web
+      targetPort: http
