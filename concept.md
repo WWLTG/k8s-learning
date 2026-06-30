@@ -12,21 +12,21 @@ Typical values include:
 
 Do not use a ConfigMap for passwords, tokens, certificates, or private keys. Use a Secret for sensitive values.
 
-## Main Usage Methods
+# Main Usage Methods
 
-### Single Value
+# Single Value
 
-Use `configMapKeyRef` when a container needs one specific key.
+Use configMapKeyRef when a container needs one specific key.
 
-### All Values
+# All Values
 
-Use `envFrom` when every ConfigMap key should become an environment variable.
+Use envFrom when every ConfigMap key should become an environment variable.
 
-### Files
+#Files
 
 Mount the ConfigMap as a volume when the application expects configuration files.
 
-## Important Behavior
+# Important Behavior
 
 Environment variables are loaded when the container starts. Updating the ConfigMap does not update environment variables inside an existing container.
 
