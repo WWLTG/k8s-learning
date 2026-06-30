@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: client-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: curlimages/curl:8.10.1
+          env:
+            - name: API_URL
+              value: http://api-service:8080
+          command:
+            - sh
+            - -c
+          args:
+            - |
+              while true; do
+                echo "Requesting ${API_URL}"
+                curl -sS --connect-timeout 3 "${API_URL}" || true
+                sleep 10
+              done
