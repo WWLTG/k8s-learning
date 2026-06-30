@@ -18,7 +18,7 @@ spec:
           image: curlimages/curl:8.10.1
           env:
             - name: API_URL
-              value: http://api-service:8080
+              value: http://api-service.backend-namespace:8080
           command:
             - sh
             - -c
