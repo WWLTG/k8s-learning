@@ -5,10 +5,10 @@ metadata:
   namespace: ingress-routing-lab
 spec:
   rules:
-    - host: wrong-routing.local
+    - host: routing-lab.local
       http:
         paths:
-          - path: /wrong
+          - path: /
             pathType: Prefix
             backend:
               service:
