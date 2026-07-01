@@ -22,7 +22,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: app-config
-                  key: APP_MODE
+                  key: APP_ENV
           envFrom:
             - configMapRef:
-                name: application-config
+                name: app-config
