@@ -29,5 +29,5 @@ spec:
           configMap:
             name: file-config
             items:
-              - key: application.properties
+              - key: app.properties
                 path: app.properties
