@@ -4,7 +4,7 @@ metadata:
   name: controller-demo
   namespace: ingress-controller-lab
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - host: controller-lab.local
       http:
