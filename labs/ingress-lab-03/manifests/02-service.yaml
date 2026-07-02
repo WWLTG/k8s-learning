@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: controller-demo-service
+  namespace: ingress-controller-lab
+spec:
+  selector:
+    app: controller-demo
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  type: ClusterIP

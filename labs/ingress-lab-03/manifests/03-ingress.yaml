@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: controller-demo
+  namespace: ingress-controller-lab
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: controller-lab.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: controller-demo-service
+                port:
+                  number: 80
