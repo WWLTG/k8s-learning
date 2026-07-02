@@ -5,7 +5,7 @@ metadata:
   namespace: ingress-lab-04
 spec:
   selector:
-    app: backend
+    app: api
   ports:
     - name: http
       port: 80
