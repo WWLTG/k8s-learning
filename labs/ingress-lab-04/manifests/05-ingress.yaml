@@ -4,7 +4,7 @@ metadata:
   name: fanout-ingress
   namespace: ingress-lab-04
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - host: fanout.local
       http:
