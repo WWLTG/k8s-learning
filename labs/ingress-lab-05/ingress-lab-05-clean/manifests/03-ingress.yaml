@@ -8,7 +8,7 @@ spec:
   tls:
     - hosts:
         - secure.local
-      secretName: secure-local-tls
+      secretName: secure-local-certificate
   rules:
     - host: secure.local
       http:
