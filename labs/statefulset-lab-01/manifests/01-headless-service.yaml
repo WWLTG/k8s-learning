@@ -6,7 +6,7 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    app: redis-cache
+    app: redis
   ports:
     - name: redis
       port: 6379
