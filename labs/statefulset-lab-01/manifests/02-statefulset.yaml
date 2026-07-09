@@ -42,7 +42,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: fast-local-storage
+        storageClassName: standard
         resources:
           requests:
             storage: 1Gi
