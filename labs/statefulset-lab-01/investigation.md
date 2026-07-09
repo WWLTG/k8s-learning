@@ -42,3 +42,32 @@ Notes
 
 StatefulSet creates Pods in order.
 If redis-0 is blocked, redis-1 and redis-2 do not continue normally.
+
+Second issue
+
+The Headless Service endpoints were fixed, but individual Pod DNS names still failed.
+
+Commands used
+
+kubectl get pod redis-0 -n statefulset-lab-01 -o jsonpath='{.spec.hostname}{"\n"}{.spec.subdomain}{"\n"}'
+kubectl exec -n statefulset-lab-01 dns-test -- nslookup redis-0.redis-headless.statefulset-lab-01.svc.cluster.local
+kubectl exec -n statefulset-lab-01 dns-test -- nslookup redis-1.redis-headless.statefulset-lab-01.svc.cluster.local
+kubectl exec -n statefulset-lab-01 dns-test -- nslookup redis-2.redis-headless.statefulset-lab-01.svc.cluster.local
+
+Observation
+
+The Pods had subdomain redis-internal.
+The Headless Service name is redis-headless.
+
+Root cause
+
+The StatefulSet serviceName did not match the Headless Service name.
+
+Fix
+
+Changed serviceName from redis-internal to redis-headless.
+
+Verification
+
+The Pods now have subdomain redis-headless.
+The full Pod DNS names now resolve correctly.
