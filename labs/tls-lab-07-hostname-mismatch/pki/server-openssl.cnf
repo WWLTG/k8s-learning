@@ -6,10 +6,10 @@ distinguished_name = dn
 req_extensions     = req_ext
 
 [ dn ]
-CN = wrong.tls.local
+CN = tls07.local
 
 [ req_ext ]
 subjectAltName = @alt_names
 
 [ alt_names ]
-DNS.1 = wrong.tls.local
+DNS.1 = tls07.local
