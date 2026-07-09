@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hostname-demo-ingress
+  namespace: tls-lab-07
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - tls07.local
+      secretName: hostname-mismatch-tls
+  rules:
+    - host: tls07.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hostname-demo-service
+                port:
+                  number: 80
