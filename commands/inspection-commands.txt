@@ -1,0 +1,47 @@
+StatefulSet inspection commands
+
+Check objects
+
+kubectl get all -n statefulset-lab-01
+
+Check StatefulSet
+
+kubectl get statefulset -n statefulset-lab-01
+kubectl describe statefulset redis -n statefulset-lab-01
+
+Check Pods
+
+kubectl get pods -n statefulset-lab-01 -o wide
+kubectl describe pod redis-0 -n statefulset-lab-01
+kubectl logs redis-0 -n statefulset-lab-01
+
+Check Services
+
+kubectl get svc -n statefulset-lab-01
+kubectl describe svc redis-headless -n statefulset-lab-01
+
+Check Endpoints
+
+kubectl get endpoints -n statefulset-lab-01
+kubectl get endpointslices -n statefulset-lab-01
+
+Check PVC
+
+kubectl get pvc -n statefulset-lab-01
+kubectl describe pvc -n statefulset-lab-01
+
+Check StorageClass
+
+kubectl get storageclass
+
+Check DNS from inside the namespace
+
+kubectl run dns-test -n statefulset-lab-01 --image=busybox:1.36 --restart=Never -- sleep 3600
+
+kubectl exec -n statefulset-lab-01 dns-test -- nslookup redis-headless
+
+kubectl exec -n statefulset-lab-01 dns-test -- nslookup redis-0.redis-headless
+
+Delete dns test pod
+
+kubectl delete pod dns-test -n statefulset-lab-01

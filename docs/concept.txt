@@ -1,0 +1,59 @@
+StatefulSet concept
+
+StatefulSet is used for stateful applications.
+
+A stateful application needs one or more of these things:
+
+Stable Pod name
+Stable network identity
+Stable storage
+Ordered startup
+Ordered shutdown
+
+Deployment is usually used for stateless applications.
+
+In a Deployment, Pods are replaceable.
+
+In a StatefulSet, Pods have identity.
+
+Example Pod names:
+
+redis-0
+redis-1
+redis-2
+
+Example stable DNS pattern:
+
+pod-name.service-name.namespace.svc.cluster.local
+
+Example:
+
+redis-0.redis-headless.statefulset-lab-01.svc.cluster.local
+
+Important fields
+
+serviceName
+
+This connects the StatefulSet to the Headless Service.
+
+volumeClaimTemplates
+
+This creates one PVC for each Pod.
+
+selector
+
+This must match the Pod labels.
+
+template.metadata.labels
+
+These labels are used by Services and the StatefulSet selector.
+
+Common problems
+
+Wrong serviceName
+Wrong Headless Service selector
+PVC Pending
+StorageClass not found
+volumeMount name mismatch
+Data mounted in the wrong path
+Pods created in order and one broken Pod can block the next Pod
