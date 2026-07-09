@@ -71,3 +71,34 @@ Verification
 
 The Pods now have subdomain redis-headless.
 The full Pod DNS names now resolve correctly.
+
+Third issue
+
+Redis data did not survive deleting redis-0.
+
+Commands used
+
+kubectl exec -n statefulset-lab-01 redis-0 -- redis-cli SET labkey statefulset-test
+kubectl exec -n statefulset-lab-01 redis-0 -- redis-cli GET labkey
+kubectl delete pod redis-0 -n statefulset-lab-01
+kubectl wait --for=condition=Ready pod/redis-0 -n statefulset-lab-01 --timeout=120s
+kubectl exec -n statefulset-lab-01 redis-0 -- redis-cli GET labkey
+
+Observation
+
+The key existed before deleting redis-0.
+After redis-0 was recreated, the key was missing.
+
+Root cause
+
+Redis was configured to write data under /data.
+The PVC was mounted under /redis-data.
+Redis was writing outside the persistent volume.
+
+Fix
+
+Changed the volume mount path from /redis-data to /data.
+
+Verification
+
+After the fix, data written to redis-0 survived deleting and recreating redis-0.
