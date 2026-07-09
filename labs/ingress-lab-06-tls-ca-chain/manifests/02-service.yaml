@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ca-chain-service
+  namespace: tls-lab-10
+spec:
+  selector:
+    app: ca-chain-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
