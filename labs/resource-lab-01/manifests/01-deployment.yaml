@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource-demo
+  namespace: resource-lab-01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource-demo
+  template:
+    metadata:
+      labels:
+        app: resource-demo
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              echo "resource demo pod: $HOSTNAME" > /usr/share/nginx/html/index.html
+              nginx -g 'daemon off;'
+          resources:
+            requests:
+              cpu: 25m
+              memory: 64Gi
+            limits:
+              cpu: 100m
+              memory: 128Gi
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 5

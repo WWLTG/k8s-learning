@@ -1,0 +1,9 @@
+README.md
+commands/inspection-commands.txt
+docs/references.md
+docs/resource-requests-and-limits.md
+examples/01-basic-resources.yaml
+labs/resource-lab-01/README.md
+labs/resource-lab-01/investigation.md
+labs/resource-lab-01/manifests/00-namespace.yaml
+labs/resource-lab-01/manifests/01-deployment.yaml

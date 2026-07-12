@@ -1,0 +1,48 @@
+Environment check
+
+kubectl config current-context
+kubectl get nodes
+
+Apply only the broken lab
+
+cd labs/resource-lab-01
+kubectl apply -f manifests/00-namespace.yaml
+kubectl apply -f manifests/01-deployment.yaml
+
+Workload inspection
+
+kubectl get deployment -n resource-lab-01
+kubectl get replicasets -n resource-lab-01
+kubectl get pods -n resource-lab-01 -o wide
+
+Pod investigation
+
+kubectl describe pod -n resource-lab-01
+kubectl get events -n resource-lab-01 --sort-by=.metadata.creationTimestamp
+
+Node resource inspection
+
+kubectl get nodes
+kubectl describe node kind-control-plane
+
+Manifest inspection
+
+kubectl get deployment resource-demo -n resource-lab-01 -o yaml
+
+Requests and limits
+
+kubectl get deployment resource-demo -n resource-lab-01   -o jsonpath='{.spec.template.spec.containers[0].resources}{"\n"}'
+
+QoS class
+
+kubectl get pod -n resource-lab-01   -o jsonpath='{.items[0].status.qosClass}{"\n"}'
+
+Optional usage observation after the fix
+
+kubectl top pod -n resource-lab-01
+
+Cleanup Kubernetes resources only
+
+kubectl delete namespace resource-lab-01
+
+Do not delete the local project directory.
