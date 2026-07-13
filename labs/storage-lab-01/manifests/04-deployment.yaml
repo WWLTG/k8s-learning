@@ -40,4 +40,4 @@ spec:
       volumes:
         - name: app-data
           persistentVolumeClaim:
-            claimName: storage-app-data-claim
+            claimName: storage-app-data
