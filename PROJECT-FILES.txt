@@ -1,0 +1,15 @@
+PROJECT-FILES.txt
+README.md
+commands/storage-inspection.md
+docs/Kubernetes_Storage_Quick_Review_AR_EN.odt
+docs/storage-concepts.md
+examples/01-emptydir-pod.yaml
+examples/02-static-pv-pvc-pod.yaml
+examples/03-dynamic-pvc-deployment.yaml
+examples/04-storageclass.yaml
+labs/storage-lab-01/README.md
+labs/storage-lab-01/manifests/00-namespace.yaml
+labs/storage-lab-01/manifests/01-storageclass.yaml
+labs/storage-lab-01/manifests/02-persistentvolume.yaml
+labs/storage-lab-01/manifests/03-persistentvolumeclaim.yaml
+labs/storage-lab-01/manifests/04-deployment.yaml
