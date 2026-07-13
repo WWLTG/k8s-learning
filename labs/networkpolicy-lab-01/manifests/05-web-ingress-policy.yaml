@@ -20,7 +20,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              network-access: trusted
+              access: trusted
           podSelector:
             matchLabels:
               access: web
