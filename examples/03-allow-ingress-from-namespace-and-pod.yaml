@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-trusted-namespace-clients
+  namespace: example
+spec:
+  podSelector:
+    matchLabels:
+      app: web
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              access: trusted
+          podSelector:
+            matchLabels:
+              access: web
+      ports:
+        - protocol: TCP
+          port: 80
