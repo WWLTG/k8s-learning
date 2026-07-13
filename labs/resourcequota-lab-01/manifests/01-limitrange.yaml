@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: container-policy
+  namespace: resourcequota-lab-01
+spec:
+  limits:
+    - type: Container
+      min:
+        cpu: 50m
+        memory: 32Mi
+      max:
+        cpu: 500m
+        memory: 256Mi
+      defaultRequest:
+        cpu: 200m
+        memory: 64Mi
+      default:
+        cpu: 300m
+        memory: 128Mi

@@ -1,0 +1,21 @@
+kubectl get namespace resourcequota-lab-01
+
+kubectl get limitrange -n resourcequota-lab-01
+kubectl describe limitrange container-policy -n resourcequota-lab-01
+
+kubectl get resourcequota -n resourcequota-lab-01
+kubectl describe resourcequota namespace-budget -n resourcequota-lab-01
+
+kubectl get deployment,replicaset,pod -n resourcequota-lab-01
+
+kubectl describe deployment quota-demo -n resourcequota-lab-01
+
+kubectl get replicasets -n resourcequota-lab-01
+
+kubectl describe replicaset -n resourcequota-lab-01
+
+kubectl get events -n resourcequota-lab-01 --sort-by=.metadata.creationTimestamp
+
+kubectl get pods -n resourcequota-lab-01 -o jsonpath='{range .items[*]}{.metadata.name}{"\nrequests: "}{.spec.containers[*].resources.requests}{"\nlimits:   "}{.spec.containers[*].resources.limits}{"\n\n"}{end}'
+
+kubectl get resourcequota namespace-budget -n resourcequota-lab-01 -o yaml
