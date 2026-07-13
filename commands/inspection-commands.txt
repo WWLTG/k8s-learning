@@ -1,0 +1,49 @@
+List LimitRange objects in all Namespaces
+
+kubectl get limitrange -A
+
+List LimitRange objects in the lab Namespace
+
+kubectl get limitrange -n limitrange-lab-01
+
+Inspect the LimitRange policy
+
+kubectl describe limitrange container-resource-policy -n limitrange-lab-01
+
+Display the full LimitRange manifest stored by the API server
+
+kubectl get limitrange container-resource-policy -n limitrange-lab-01 -o yaml
+
+Inspect the lab workloads
+
+kubectl get deployment,replicaset,pod -n limitrange-lab-01
+
+Inspect the defaulted Pod
+
+kubectl get pod defaults-demo -n limitrange-lab-01 -o yaml
+
+Display only the final resource values of the defaulted Container
+
+kubectl get pod defaults-demo -n limitrange-lab-01   -o jsonpath='{.spec.containers[0].resources}{"\n"}'
+
+Inspect the Deployment
+
+kubectl describe deployment policy-demo -n limitrange-lab-01
+
+Inspect the ReplicaSet
+
+kubectl get replicaset -n limitrange-lab-01
+
+kubectl describe replicaset -n limitrange-lab-01
+
+Inspect Namespace events in chronological order
+
+kubectl get events -n limitrange-lab-01 --sort-by=.metadata.creationTimestamp
+
+Inspect the Deployment template resource values
+
+kubectl get deployment policy-demo -n limitrange-lab-01   -o jsonpath='{.spec.template.spec.containers[0].resources}{"\n"}'
+
+Check whether any Pod was created for the Deployment
+
+kubectl get pods -n limitrange-lab-01   -l app=policy-demo
