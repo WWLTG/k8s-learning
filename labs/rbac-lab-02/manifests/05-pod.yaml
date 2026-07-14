@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rbac-client
+  namespace: rbac-lab-02
+spec:
+  serviceAccountName: config-reader
+  restartPolicy: Always
+  containers:
+    - name: client
+      image: busybox:1.36
+      command:
+        - /bin/sh
+        - -c
+        - sleep 3600
+      resources:
+        requests:
+          cpu: 5m
+          memory: 8Mi
+        limits:
+          cpu: 20m
+          memory: 24Mi

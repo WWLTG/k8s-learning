@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: application-settings
+  namespace: rbac-lab-02
+data:
+  environment: study
+  feature-mode: safe
