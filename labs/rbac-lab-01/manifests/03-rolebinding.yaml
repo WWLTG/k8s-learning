@@ -6,7 +6,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: pod-reader
-    namespace: default
+    namespace: rbac-lab-01
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
