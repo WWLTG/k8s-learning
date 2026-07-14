@@ -13,7 +13,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              access: allowed
+              access: trusted
       ports:
         - protocol: TCP
           port: 80
