@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: networkpolicy-app-lab-02
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              echo "NetworkPolicy Lab 02 - $HOSTNAME" > /usr/share/nginx/html/index.html
+              nginx -g 'daemon off;'
+          ports:
+            - name: http
+              containerPort: 80
