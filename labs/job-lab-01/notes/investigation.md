@@ -13,7 +13,7 @@ The command tests for the file /work/input.txt
 Root cause
 
 The container expects /work/input.txt to exist but the file is never created or mounted
-The test command exits with a non-zero status\
+The test command exits with a non-zero status
 The set -e option stops the script immediately
 The Job retries until backoffLimit 2 is exceeded
 
