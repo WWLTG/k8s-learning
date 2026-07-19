@@ -22,5 +22,7 @@ spec:
             - |
               set -e
               echo "Starting report task on $HOSTNAME"
+              mkdir -p /work
+              echo "report input" > /work/input.txt
               test -f /work/input.txt
               echo "Report task completed"
