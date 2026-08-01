@@ -1,4 +1,4 @@
-# General Deployment inspection commands
+> General Deployment inspection commands
 kubectl get deployment
 kubectl get replicaset
 kubectl get pods
@@ -9,6 +9,6 @@ kubectl logs <pod-name>
 kubectl rollout status deployment/<deployment-name>
 kubectl rollout history deployment/<deployment-name>
 
-# Show ownership chain
+> Show ownership chain
 kubectl get rs -o custom-columns=NAME:.metadata.name,OWNER:.metadata.ownerReferences[0].name,DESIRED:.spec.replicas,READY:.status.readyReplicas
 kubectl get pods -o custom-columns=NAME:.metadata.name,OWNER:.metadata.ownerReferences[0].name,READY:.status.containerStatuses[0].ready,PHASE:.status.phase

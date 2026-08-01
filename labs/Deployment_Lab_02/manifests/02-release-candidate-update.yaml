@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-rollout
+  namespace: deployment-lab-02
+  annotations:
+    kubernetes.io/change-cause: "Revision 3: release candidate update"
+spec:
+  replicas: 3
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 120
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: web-rollout
+  template:
+    metadata:
+      labels:
+        app: web-rollout
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.28.99-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 3
+            timeoutSeconds: 2
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 25m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
