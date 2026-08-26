@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: secure-ingress
+  namespace: ingress-lab-05
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - secure.local
+      secretName: secure-local-tls
+  rules:
+    - host: secure.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: secure-web-service
+                port:
+                  number: 80

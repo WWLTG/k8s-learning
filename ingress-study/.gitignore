@@ -1,0 +1,7 @@
+# Local TLS private keys
+**/pki/*.key
+**/certs/*.key
+
+# Generated Kubernetes TLS Secret manifests
+labs/ingress-lab-06-tls-ca-chain/manifests/04-tls-secret.yaml
+labs/tls-lab-07-hostname-mismatch/manifests/03-tls-secret.yaml

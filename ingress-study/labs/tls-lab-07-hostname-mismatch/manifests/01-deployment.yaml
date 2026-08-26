@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostname-demo
+  namespace: tls-lab-07
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hostname-demo
+  template:
+    metadata:
+      labels:
+        app: hostname-demo
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              echo "TLS hostname mismatch lab pod: $HOSTNAME" > /usr/share/nginx/html/index.html
+              nginx -g 'daemon off;'
+          ports:
+            - name: http
+              containerPort: 80

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tls-ingress
+  namespace: default
+spec:
+  ingressClassName: example-controller
+  tls:
+    - hosts:
+        - secure.example.local
+      secretName: secure-example-tls
+  rules:
+    - host: secure.example.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: secure-web-service
+                port:
+                  number: 80
