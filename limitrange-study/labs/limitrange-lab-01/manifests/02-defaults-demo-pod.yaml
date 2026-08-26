@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: defaults-demo
+  namespace: limitrange-lab-01
+  labels:
+    app: defaults-demo
+spec:
+  containers:
+    - name: pause
+      image: registry.k8s.io/pause:3.10.1
+      imagePullPolicy: IfNotPresent
