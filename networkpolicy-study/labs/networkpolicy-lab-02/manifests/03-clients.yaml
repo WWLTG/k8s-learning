@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: trusted-client
+  namespace: networkpolicy-trusted-lab-02
+  labels:
+    role: client
+spec:
+  containers:
+    - name: busybox
+      image: busybox:1.36.1
+      command:
+        - /bin/sh
+        - -c
+        - sleep 3600
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: untrusted-client
+  namespace: networkpolicy-untrusted-lab-02
+  labels:
+    role: client
+spec:
+  containers:
+    - name: busybox
+      image: busybox:1.36.1
+      command:
+        - /bin/sh
+        - -c
+        - sleep 3600
