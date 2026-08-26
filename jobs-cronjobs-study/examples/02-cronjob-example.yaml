@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: example-cronjob
+  namespace: default
+spec:
+  schedule: "*/5 * * * *"
+  suspend: false
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        metadata:
+          labels:
+            app: example-cronjob
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: scheduled-task
+              image: busybox:1.36
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Scheduled task started on $HOSTNAME"
+                  date
+                  echo "Scheduled task completed"

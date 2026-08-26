@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: history-demo
+  namespace: cronjob-lab-02
+spec:
+  schedule: "* * * * *"
+  suspend: false
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        metadata:
+          labels:
+            app: history-demo
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: history-task
+              image: busybox:1.36
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Scheduled task started on $HOSTNAME"
+                  date
+                  echo "Scheduled task completed"
