@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: storage-example
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-demo
+  namespace: storage-example
+spec:
+  containers:
+    - name: app
+      image: busybox:1.36
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - |
+          echo "temporary Pod data" > /data/message.txt
+          sleep 3600
+      volumeMounts:
+        - name: temporary-data
+          mountPath: /data
+  volumes:
+    - name: temporary-data
+      emptyDir: {}
