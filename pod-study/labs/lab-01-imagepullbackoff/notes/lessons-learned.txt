@@ -1,0 +1,22 @@
+The ImagePullBackOff status indicates that the 
+issue occurred before the app was launched.
+
+
+In this case, the app logs are not the best place to start,
+as the container never even started.
+
+The best course of action for investigation is:
+kubectl describe pod POD-NAME
+
+The focus should be on the section Event
+
+Common causes:
+
+
+The image name is incorrect.
+The image version does not exist.
+The image is private and requires login details.
+A connection issue with the image database.
+
+so thank u all see u soon to solved more labs
+

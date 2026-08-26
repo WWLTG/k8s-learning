@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: crashloop-demo
+  labels:
+    app: crashloop-demo
+spec:
+  restartPolicy: Always
+
+  containers:
+    - name: nginx
+      image: nginx:1.25-alpine
+      imagePullPolicy: IfNotPresent
+
+      command:
+        - /bin/sh
+        - -c
+
+      args:
+        - |
+          set -e
+
+          echo "INFO: application is starting"
+          echo "INFO: validating nginx configuration"
+
+          nginx -t -c /etc/nginx/nginx.conf
+
+          echo "INFO: configuration is valid"
+          exec nginx -g 'daemon off;'

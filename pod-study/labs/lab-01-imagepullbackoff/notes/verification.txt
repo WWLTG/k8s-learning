@@ -1,0 +1,17 @@
+command use
+
+kubectl get pod image-pull-lab
+
+result
+READY: 1/1
+STATUS: Running
+RESTARTS: 0
+
+after that i used 
+kubectl describe pod image-pull-lab
+
+Event is
+
+Successfully pulled image
+Container created
+Container started

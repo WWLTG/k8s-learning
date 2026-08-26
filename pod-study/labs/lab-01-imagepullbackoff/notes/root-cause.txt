@@ -1,0 +1,11 @@
+The container was unable to start because the Pod file contained an image name or version that does not exist.
+
+
+Invalid image:
+nginx:1.999-lab
+
+Correct image
+nginx:1.25
+
+The old Pod was then deleted and recreated using the corrected file.
+
