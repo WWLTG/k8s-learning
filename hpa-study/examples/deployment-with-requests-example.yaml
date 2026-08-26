@@ -1,0 +1,29 @@
+# Reading-only example.
+# Do not apply this file during the lab.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.27-alpine
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 300m
+              memory: 128Mi
